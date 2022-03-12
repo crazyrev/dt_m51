@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-BOARD_VENDOR := samsung
+# Configs
 DEVICE_PATH := device/samsung/m51
 ALLOW_MISSING_DEPENDENCIES=true
 
@@ -15,7 +15,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno618
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-2a
+TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
@@ -38,7 +38,6 @@ DEXPREOPT_GENERATE_APEX_IMAGE := true
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
 USE_CUSTOM_AUDIO_POLICY := 1
-USE_XML_AUDIO_POLICY_CONF := 1
 
 # FM
 BOARD_HAS_QCA_FM_SOC := "cherokee"
