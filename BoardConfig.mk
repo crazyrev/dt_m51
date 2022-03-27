@@ -14,8 +14,8 @@
 # limitations under the License.
 #
 
-# Inherit common board flags
--include device/samsung/m51-common/BoardConfigCommon.mk
+# Inherit Vendor board flags
+-include vendor/samsung/m51/BoardConfigVendor.mk
 
 # Path
 DEVICE_PATH := device/samsung/m51
@@ -245,6 +245,3 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 # Recovery
 TARGET_RECOVERY_DENSITY := xxhdpi
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
-
-# Inherit from proprietary vendor
--include vendor/samsung/m51/BoardConfigVendor.mk
