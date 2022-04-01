@@ -1,18 +1,18 @@
 #!/bin/bash
 #
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2017-2021 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 set -e
 
-export DEVICE=m51
-export VENDOR=samsung
+DEVICE_COMMON=sm6150
+VENDOR=samsung
 
-# Load extract_utils and do some sanity checks
+# Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
+if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 ANDROID_ROOT="${MY_DIR}/../../.."
 
@@ -23,31 +23,22 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
-# Initialize the helper for common
-setup_vendor "${VENDOR}" "${ANDROID_ROOT}" true
+# Initialize the helper
+setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true
 
 # Warning headers and guards
 write_headers "m51"
 
-# The standard common blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
 
-# Finish
+###################################################################################################
+# CUSTOM PART START                                                                               #
+###################################################################################################
+
+OUTDIR=vendor/$VENDOR/$DEVICE_COMMON
+
+###################################################################################################
+# CUSTOM PART END                                                                                 #
+###################################################################################################
+# Done
 write_footers
-
-if [ -s "${MY_DIR}/../${DEVICE}/proprietary-files.txt" ]; then
-    # Reinitialize the helper for device
-    setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false
-
-    # Warning headers and guards
-    write_headers
-
-    # The standard device blobs
-    write_makefiles "${MY_DIR}/../${DEVICE}/proprietary-files.txt" true
-
-    # Finish
-    write_footers
-fi
-
-
-"./../../${VENDOR}/setup-makefiles.sh" "$@"

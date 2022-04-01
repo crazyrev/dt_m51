@@ -472,11 +472,11 @@ on post-fs-data
     mkdir /efs/biometrics 0770 system system
     mkdir /efs/biometrics/meta 0770 system system
 
-service nqnfcinfo /system/vendor/bin/nqnfcinfo
-    class late_start
-    group nfc
-    user system
-    oneshot
+#service nqnfcinfo /system/vendor/bin/nqnfcinfo
+#    class late_start
+#    group nfc
+#    user system
+#    oneshot
 
 service iop /system/vendor/bin/iop
     class main
@@ -660,15 +660,6 @@ service vendor.move_wifi_data /system/bin/move_wifi_data.sh
     group wifi
     disabled
     oneshot
-
-service wigignpt /vendor/bin/wigignpt
-    interface vendor.qti.hardware.wigig.netperftuner@1.0::INetPerfTuner default
-    class hal
-    socket wigig/wigignpt stream 660 system wifi
-    user system
-    group wifi
-    capabilities NET_ADMIN
-    disabled
 
 on property:persist.vendor.wigig.npt.enable=1
     start wigignpt
@@ -1019,6 +1010,13 @@ on property:vendor.opengles.version=*
 #Set gpu available frequencies property
 on property:vendor.gpu.available_frequencies=*
     setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
+
+on property:vendor.post_boot.parsed=1
+    # Setup permission for powerHAL
+    chown system system /dev/stune/top-app/schedtune.boost
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+    chown system system /sys/class/devfreq/soc:qcom,gpubw/min_freq
 
 service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     override

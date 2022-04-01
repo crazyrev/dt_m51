@@ -1,4 +1,0 @@
-allow bootanim vendor_file:dir { open read };
-
-allow bootanim traced:unix_stream_socket connectto;
-allow bootanim traced_producer_socket:sock_file write;
