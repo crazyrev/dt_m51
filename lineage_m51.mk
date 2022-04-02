@@ -8,10 +8,10 @@
 $(call inherit-product, device/samsung/m51/device.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := aosp_m51
+PRODUCT_NAME := lineage_m51
 PRODUCT_DEVICE := m51
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-M515F
@@ -19,8 +19,6 @@ PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 
 TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_GAPPS_ARCH := arm64
-TARGET_USES_AOSP_RECOVERY := true
 
 # Use the latest approved GMS identifiers
 PRODUCT_BUILD_PROP_OVERRIDES += \

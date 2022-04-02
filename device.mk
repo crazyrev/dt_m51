@@ -16,9 +16,12 @@ $(call inherit-product, vendor/samsung/m51/m51-vendor.mk)
 
 PRODUCT_BUILD_SUPER_PARTITION := false
 BOARD_BUILD_PRODUCT_IMAGE := true
-PRODUCT_SHIPPING_API_LEVEL := 29
+PRODUCT_SHIPPING_API_LEVEL := 30
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
+
+DEVICE_PATH := device/samsung/m51
+LOCAL_PATH := device/samsung/m51
 
 # AAPT config
 PRODUCT_AAPT_CONFIG := normal
@@ -111,9 +114,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/init/android.hardware.gatekeeper@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.gatekeeper@1.0-service.rc
-
-# Dex
-PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
 
 # Display/Graphics
 PRODUCT_PACKAGES += \
@@ -286,7 +286,7 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-aosp
+    $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
@@ -400,18 +400,14 @@ PRODUCT_PACKAGES += \
     qti-telephony-hidl-wrapper \
     qti_telephony_hidl_wrapper.xml \
     qti-telephony-utils \
-    qti_telephony_utils.xml \
-    telephony-ext \
+    qti_telephony_utils.xml
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH) \
-    hardware/google/interfaces \
-    hardware/google/pixel \
-    hardware/samsung/aidl/power-libperfmgr
+    $(LOCAL_PATH)
 
 # Trust
 PRODUCT_PACKAGES += \
@@ -455,4 +451,4 @@ PRODUCT_PACKAGES += \
     libdisplayconfig.qti \
     libminijail \
     libnl \
-    libqdMetaData \
+    libqdMetaData
