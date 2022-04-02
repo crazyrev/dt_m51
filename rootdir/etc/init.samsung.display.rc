@@ -40,7 +40,6 @@ on init
 	chown system media_rw /sys/class/mdnie/mdnie/outdoor
 	chown system system  /sys/class/mdnie/mdnie/mdnie_temp
 	chown system media_rw /sys/class/mdnie/mdnie/mode
-	chown system system /sys/class/mdnie/mdnie/mode_max
 	chown system system /sys/class/mdnie/mdnie/negative
 	chown system media_rw /sys/class/mdnie/mdnie/playspeed
 	chown system media_rw /sys/class/mdnie/mdnie/accessibility
@@ -284,7 +283,7 @@ on init
 
 	chown system system /sys/class/lcd/panel1/poc_info
 	chmod 0440 /sys/class/lcd/panel1/poc_info
-
+	
 # POC OFF
 	chown system system /sys/class/lcd/panel/poc_onoff
 	chmod 0660 /sys/class/lcd/panel/poc_onoff
@@ -410,19 +409,12 @@ on init
 	chown system system /sys/class/lcd/panel/actual_mask_brightness
 	chmod 0660 /sys/class/lcd/panel/actual_mask_brightness
 
-# UB CONN DET
+# UB CONN DET 
 	chown system system /sys/class/lcd/panel/conn_det
 	chmod 0660 /sys/class/lcd/panel/conn_det
 
 	chown system system /sys/class/lcd/panel1/conn_det
 	chmod 0660 /sys/class/lcd/panel1/conn_det
-
-# TE CHECK
-	chown system system /sys/class/lcd/panel/te_check
-	chmod 0660 /sys/class/lcd/panel/te_check
-
-	chown system system /sys/class/lcd/panel1/te_check
-	chmod 0660 /sys/class/lcd/panel1/te_check
 
 # DIA
 	chown system system /sys/class/lcd/panel/dia
@@ -475,7 +467,7 @@ on init
 	chown system system /sys/class/lcd/panel/motto/emphasis
 	chmod 0660 /sys/class/lcd/panel/motto/emphasis
 
-# ioctl_power_ctrl
+# ioctl_power_ctrl  
 	chown system system /sys/class/lcd/panel/ioctl_power_ctrl
 	chmod 0440 /sys/class/lcd/panel/ioctl_power_ctrl
 
@@ -484,6 +476,6 @@ on init
 
 # SVC
 	chown system system /sys/class/lcd/panel/SVC_OCTA_DDI_CHIPID
-	chmod 0440 /sys/class/lcd/panel/SVC_OCTA_DDI_CHIPID
+	chmod 0660 /sys/class/lcd/panel/SVC_OCTA_DDI_CHIPID
 	chown system system /sys/class/lcd/panel1/SVC_OCTA_DDI_CHIPID
-	chmod 0440 /sys/class/lcd/panel1/SVC_OCTA_DDI_CHIPID
+	chmod 0660 /sys/class/lcd/panel1/SVC_OCTA_DDI_CHIPID
