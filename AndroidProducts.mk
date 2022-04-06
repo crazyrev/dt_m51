@@ -1,13 +1,13 @@
 #
-# Copyright (C) 2020 The pixysOS Project
+# Copyright (C) 2020 The arrowOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/pixys_m51.mk
+    $(LOCAL_DIR)/arrow_m51.mk
 
 COMMON_LUNCH_CHOICES := \
-    pixys_m51-user \
-    pixys_m51-userdebug \
-    pixys_m51-eng
+    arrow_m51-user \
+    arrow_m51-userdebug \
+    arrow_m51-eng
