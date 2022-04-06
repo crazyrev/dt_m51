@@ -1,13 +1,13 @@
 #
-# Copyright (C) 2020 The lineageOS Project
+# Copyright (C) 2020 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit from r5q device
+# Inherit from M51 device
 $(call inherit-product, device/samsung/m51/device.mk)
 
-# Inherit some common lineage stuff.
+# Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
