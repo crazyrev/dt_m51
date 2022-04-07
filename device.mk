@@ -400,14 +400,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ims-ext-common \
     ims_ext_common.xml \
-    qti-telephony-hidl-wrapper \
-    qti_telephony_hidl_wrapper.xml \
-    qti-telephony-utils \
-    qti_telephony_utils.xml \
-    telephony-ext
+#    qti-telephony-hidl-wrapper \
+ #   qti_telephony_hidl_wrapper.xml \
+  #  qti-telephony-utils \
+  #  qti_telephony_utils.xml \
+  #  telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+#PRODUCT_BOOT_JARS += \
+#    telephony-ext
 
 PRODUCT_PACKAGES += \
     secril_config_svc
@@ -461,7 +461,7 @@ PRODUCT_PACKAGES += \
     libqdMetaData
 
 # VNDK
-PRODUCT_EXTRA_VNDK_VERSIONS := 28 29 30
+PRODUCT_EXTRA_VNDK_VERSIONS := 28 29
 
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 29
