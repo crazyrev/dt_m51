@@ -179,7 +179,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    vendor.samsung.hardware.biometrics.fingerprint@3.0-service.sm7125
+    android.hardware.biometrics.fingerprint@2.3-service.samsung_m51
 
 # fastbootd
 PRODUCT_PACKAGES += \
@@ -377,7 +377,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.sm7125
+    android.hardware.vibrator-service.sm6150
 
 # Tether
 PRODUCT_PACKAGES += \

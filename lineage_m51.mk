@@ -1,4 +1,4 @@
-#
+ #
 # Copyright (C) 2021 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,6 +35,8 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
 
+$(call inherit-product-if-exists, vendor/lawnchair/lawnchair.mk)
+ 
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := lineage_m51
 PRODUCT_DEVICE := m51
