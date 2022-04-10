@@ -15,7 +15,7 @@
 #
 
 # Inherit device configuration
-$(call inherit-product, device/samsung/m51/device_m51.mk)
+$(call inherit-product, device/samsung/m51/device.mk)
 
 # Inherit from the 64 bit configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -24,7 +24,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/dot/config/common.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
@@ -34,11 +34,9 @@ TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
-
-$(call inherit-product-if-exists, vendor/lawnchair/lawnchair.mk)
  
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := lineage_m51
+PRODUCT_NAME := dot_m51
 PRODUCT_DEVICE := m51
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-M515F
