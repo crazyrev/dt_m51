@@ -32,7 +32,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # APEX
-PRODUCT_COMPRESSED_APEX := false
+PRODUCT_COMPRESSED_APEX := true
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 30
@@ -102,7 +102,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_usb_gray.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_usb_gray.xml \
     $(LOCAL_PATH)/configs/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
     $(LOCAL_PATH)/configs/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+#    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
@@ -156,9 +156,9 @@ PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl \
     libtinyxml \
     libtinyxml2 \
-    hwcomposer.m51 \
-    gralloc.m51 \
-    memtrack.m51 \
+    hwcomposer.sm6150 \
+    gralloc.sm6150 \
+    memtrack.sm6150 \
     libqdMetaData \
     libdisplayconfig.qti \
     vendor.qti.hardware.display.mapper@1.1.vendor \
@@ -419,10 +419,6 @@ PRODUCT_COPY_FILES += \
 # WiFi Display
 PRODUCT_PACKAGES += \
     libnl
-
-# Prop files
-TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
-TARGET_VENDOR_PROP += $(LOCAL_PATH)/vendor.prop
 
 # Inherit proprietary blobs
 $(call inherit-product, vendor/samsung/m51/m51-vendor.mk)
