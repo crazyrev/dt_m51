@@ -864,7 +864,6 @@
 
     <!-- For performance and storage reasons, limit the number of fingerprints per user -->
     <integer name="config_fingerprintMaxTemplatesPerUser">4</integer>
-    
-    <string translatable="false" name="config_mainBuiltInDisplayCutout">M 0,0 M 0,12.08888888888889 a 9.244444444444444,9.244444444444444 0 1,0 0,18.48888888888889 a 9.244444444444444,9.244444444444444 0 1,0 0,-18.48888888888889 Z @dp</string>
+	<string translatable="false" name="config_mainBuiltInDisplayCutout">M 0,0 M 0,12.08888888888889 a 9.244444444444444,9.244444444444444 0 1,0 0,18.48888888888889 a 9.244444444444444,9.244444444444444 0 1,0 0,-18.48888888888889 Z @dp</string>
 
 </resources>

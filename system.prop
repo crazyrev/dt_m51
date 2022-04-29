@@ -1,4 +1,2 @@
 # idk
 ro.vendor.qti.va_aosp.support=1
-
-ro.charger.enable_suspend=true

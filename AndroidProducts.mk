@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/dot_m51.mk
+    $(LOCAL_DIR)/lineage_m51.mk
 
 COMMON_LUNCH_CHOICES := \
-    dot_m51-userdebug \
-    dot_m51-user \
-    dot_m51-eng
+    lineage_m51-userdebug \
+    lineage_m51-user \
+    lineage_m51-eng
