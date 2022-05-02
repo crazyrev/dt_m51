@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/m51
+DEVICE_PATH := device/samsung/m51
 
 # Kernel
 TARGET_KERNEL_CONFIG        := m51_defconfig
@@ -94,9 +94,7 @@ TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 BOARD_ROOT_EXTRA_FOLDERS += \
     prism \
-    product \
     optics \
-    metadata \
     spu \
     misc \
     efs
@@ -133,7 +131,7 @@ BOARD_VENDORIMAGE_EXTFS_INODE_COUNT             := -1
 BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT            := -1
 BOARD_ODMIMAGE_EXTFS_INODE_COUNT           	  := -1
 
-BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_FLASH_BLOCK_SIZE := 262144
 
 # Out dirs
 TARGET_COPY_OUT_VENDOR := vendor
@@ -175,10 +173,7 @@ TARGET_USES_ION := true
 TARGET_DISABLED_UBWC := true
 BOARD_USES_ADRENO := true
 
-# Fingerprint
-BUILD_FINGERPRINT := "samsung/m51nsxx/m51:11/RP1A.200720.012/M515FXXU4DVD1:user/release-keys"
-PRIVATE_BUILD_DESC := "m51nsxx-user 11 RP1A.200720.012 M515FXXU4DVD1 release-keys"
-
+# Vendor Level
 VENDOR_SECURITY_PATCH := 2022-01-01
 
 # FM
