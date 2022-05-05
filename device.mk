@@ -368,6 +368,15 @@ PRODUCT_PACKAGES += \
     librilutils \
     librmnetctl
 
+# Seccomp
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+    $(DEVICE_PATH)/configs/seccomp/vendor.qti.hardware.dsp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/vendor.qti.hardware.dsp.policy \
+
+# Sensor
+PRODUCT_PACKAGES += \
+    libsensorndkbridge
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.1-service.samsung-multihal \
@@ -433,6 +442,13 @@ PRODUCT_COPY_FILES += \
 # WiFi Display
 PRODUCT_PACKAGES += \
     libnl
+
+# Binder
+PRODUCT_PACKAGES += \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
