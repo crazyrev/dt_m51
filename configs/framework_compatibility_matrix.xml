@@ -90,11 +90,11 @@
             <name>INfc</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal><!-- 
     <hal format="hidl" optional="true">
         <name>android.hardware.nfc</name>
         <version>1.2</version>
-        <interface>
+	        <interface>
             <name>INfc</name>
             <instance>default</instance>
         </interface>
@@ -106,7 +106,7 @@
             <name>INfc</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal>-->
     <hal format="hidl" optional="true">
         <name>android.hardware.radio</name>
         <version>1.0-4</version>
@@ -146,14 +146,16 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.power</name>
+<!--     <hal format="aidl" optional="true">
+         <name>android.hardware.power</name>
+       <version>1-2</version>
         <interface>
             <name>IPower</name>
             <instance>default</instance>
         </interface>
+         <fqname>@1-2::IPower/default</fqname>
     </hal>
-    <hal format="aidl" optional="true">
+   --> <hal format="aidl" optional="true">
         <name>vendor.lineage.power</name>
         <interface>
             <name>IPower</name>
