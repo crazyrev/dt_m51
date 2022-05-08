@@ -58,14 +58,12 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a76
 TARGET_KERNEL_CONFIG        := m51_defconfig
 BOARD_NAME                  := SRPTD22A002
 TARGET_KERNEL_CLANG_COMPILE := true
-# Build with Clang 11 for now
 TARGET_KERNEL_CLANG_VERSION := r383902
 TARGET_KERNEL_SOURCE        := kernel/samsung/m51
 TARGET_KERNEL_ARCH          := arm64
 TARGET_KERNEL_HEADER_ARCH   := arm64
 TARGET_LINUX_KERNEL_VERSION := 4.14
 
-# Kernel flags
 BOARD_KERNEL_CMDLINE += console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1 androidboot.usbcontroller=a600000.dwc3 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_BOOTIMG_HEADER_VERSION := 2
@@ -79,7 +77,6 @@ BOARD_KERNEL_IMAGE_NAME      := Image.gz-dtb
 BOARD_KERNEL_SEPARATED_DTBO  := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
-# Kernel: mkbootimgs args
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
@@ -111,17 +108,15 @@ BOARD_USES_METADATA_PARTITION        := true
 TARGET_USERIMAGES_USE_F2FS           := true
 TARGET_USERIMAGES_USE_EXT4           := true
 
-# Partition sizes, obtained with blockdev --getsize64
 BOARD_DTBOIMG_PARTITION_SIZE       := 10485760
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 82726912
 BOARD_CACHEIMAGE_PARTITION_SIZE    := 419430400
 
-# Super partition sizes, obtained with fdisk -l /dev/block/dm-[0,1,2,3]
-BOARD_SUPER_PARTITION_SIZE                      := 8053063680
+BOARD_SUPER_PARTITION_SIZE                      := 10385096704
 BOARD_SUPER_PARTITION_GROUPS                    := samsung_dynamic_partitions
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product odm
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE           := 8048869376
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE           := 10380902400
 BOARD_SYSTEMIMAGE_PARTITION_SIZE       := 4986593280
 BOARD_VENDORIMAGE_PARTITION_SIZE       := 916078592
 BOARD_PRODUCTIMAGE_PARTITION_SIZE      := 945741824
@@ -153,9 +148,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
 # Keymaster
 TARGET_KEYMASTER_VARIANT := samsung
 
-# Display
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x2000U | 0x400000000LL
-
 # HIDL manifests
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/framework_compatibility_matrix.xml
@@ -175,7 +167,10 @@ TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
 TARGET_DISABLED_UBWC := true
 BOARD_USES_ADRENO := true
-TARGET_USES_VULKAN := true
+
+# Fingerprint
+BUILD_FINGERPRINT := "samsung/m51nsxx/m51:11/RP1A.200720.012/M515FXXU2CUB7:user/release-keys"
+PRIVATE_BUILD_DESC := "m51nsxx-user 11 RP1A.200720.012 M515FXXU2CUB7 release-keys"
 
 VENDOR_SECURITY_PATCH := 2022-01-01
 

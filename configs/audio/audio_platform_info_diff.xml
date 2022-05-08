@@ -26,29 +26,28 @@
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          -->
 <audio_platform_info>
     <acdb_ids>
-        <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_CALL_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_CALL_SPEAKER_EVS" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_CALL_DEX_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_CALL_DEX_SPEAKER_EVS" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER_EVS" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_WIFI_CALL_DEX_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_WIFI_CALL_DEX_SPEAKER_EVS" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_VOIP_COMM_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_VOIP_COMM_DEX_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_VOIP_FMC_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_VOIP_FMC_DEX_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_FM_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_CALL_SPEAKER_EX" acdb_id="72"/>
-        <device name="SND_DEVICE_OUT_CALL_SPEAKER_EX_EVS" acdb_id="72"/>
-        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER_EX" acdb_id="72"/>
-        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER_EX_EVS" acdb_id="72"/>
+        <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_CALL_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_CALL_SPEAKER_EVS" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_CALL_DEX_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_CALL_DEX_SPEAKER_EVS" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER_EVS" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_DEX_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_DEX_SPEAKER_EVS" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_DEX_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_VOIP_COMM_TV_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_VOIP_FMC_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_VOIP_FMC_DEX_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_VOIP_GAMING_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_FM_SPEAKER" acdb_id="13"/>
+        <device name="SND_DEVICE_OUT_CALL_SPEAKER_EX" acdb_id="75"/>
+        <device name="SND_DEVICE_OUT_CALL_SPEAKER_EX_EVS" acdb_id="75"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER_EX" acdb_id="75"/>
+        <device name="SND_DEVICE_OUT_WIFI_CALL_SPEAKER_EX_EVS" acdb_id="75"/>
+        <device name="SND_DEVICE_IN_USB_MIC_REMOTEMIC" acdb_id="511"/>
     </acdb_ids>
-    <backend_names>
-        <device name="SND_DEVICE_OUT_BT_A2DP" backend="bt-a2dp" interface="SLIMBUS_7_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_A2DP" backend="speaker-and-bt-a2dp" interface="WSA_CDC_DMA_RX_0-and-SLIMBUS_7_RX"/>
-    </backend_names>
 </audio_platform_info>
