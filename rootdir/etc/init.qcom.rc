@@ -91,6 +91,19 @@ on init
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
 
+on fs
+# debug boot process
+    rm /cache/boot_lc_full.txt
+    rm /cache/boot_lc_crash.txt
+    rm /cache/boot_lc_kernel.txt
+    rm /cache/boot_lc_logcat.txt
+    rm /cache/kmsg.txt
+    start boot_lc
+    start boot_lc_kernel
+    start boot_lc_crash
+    start boot_lc_kmsg
+    start boot_lc_logcat
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -946,6 +959,41 @@ service esepmdaemon /system/vendor/bin/esepmdaemon
 on charger
 #    setprop persist.sys.usb.config mass_storage
     start qcom-post-boot
+
+service boot_lc /system/bin/logcat -b all -f /cache/boot_lc_full.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_lc_crash /system/bin/logcat -b crash -D -f /cache/boot_lc_crash.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_lc_kernel /system/bin/logcat -b kernel -D -f /cache/boot_lc_kernel.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_lc_kmsg /system/bin/sh -c "cat /proc/kmsg > /cache/kmsg.txt"
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_lc_logcat /system/bin/logcat -f /cache/boot_lc_logcat.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
 
 #add poweroffhandler
 service poweroffhandler /system/vendor/bin/poweroffhandler
