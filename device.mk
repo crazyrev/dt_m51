@@ -16,6 +16,26 @@
 # Path
 DEVICE_PATH := device/samsung/m51
 
+# Prop
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.has_wide_color_display=true \
+    ro.surface_flinger.has_HDR_display=true \
+    ro.surface_flinger.use_color_management=true \
+    ro.surface_flinger.wcg_composition_dataspace=143261696 \
+    ro.surface_flinger.protected_contents=true \
+    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
+    ro.secure=0 \
+    ro.adb.secure=0
+    persist.service.acm.enable=0 \
+    persist.sys.usb.config=mtp,adb \
+    ro.debuggable=1 \
+    ro.dalvik.vm.native.bridge=0 \
+    ro.mount.fs=EXT4 \
+    ro.kernel.android.checkjni=0 \
+    persist.service.adb.enable=1 \
+    persist.service.debuggable=1 \
+    persist.sys.usb.config=mtp,adb
+
 # Partitions
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -29,6 +49,10 @@ PRODUCT_COMPRESSED_APEX := false
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 30
+
+# AID/fs configs
+PRODUCT_PACKAGES += \
+    fs_config_files
 
 # No A/B
 AB_OTA_UPDATER := false
@@ -158,6 +182,9 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@4.0.vendor \
     vendor.display.config@2.0.vendor
 
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 # Doze
 PRODUCT_PACKAGES += \
     SamsungDoze
@@ -171,10 +198,6 @@ PRODUCT_PACKAGES += \
 # fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
-
-# FastCharge
-PRODUCT_PACKAGES += \
-    vendor.lineage.fastcharge@1.0-service.samsung
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
@@ -342,21 +365,13 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@2.1-service.samsung-multihal \
     android.hardware.sensors@2.0-ScopedWakelock.vendor
 
-# Touch features
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samsung
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
 # Vendor service manager
 PRODUCT_PACKAGES += \
     vndservicemanager
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.2-service-qti
+    android.hardware.usb@1.0-service
 
 # Vibrator
 PRODUCT_PACKAGES += \
