@@ -36,6 +36,17 @@ on early-init
     chmod 0755 /sys/kernel/debug
     mount tracefs tracefs /sys/kernel/tracing
     chmod 0755 /sys/kernel/tracing
+# debug boot process
+    rm /storage/C3ED-1DF3/boot_lc_full.txt
+    rm /storage/C3ED-1DF3/boot_lc_crash.txt
+    rm /storage/C3ED-1DF3/boot_lc_kernel.txt
+    rm /storage/C3ED-1DF3/boot_lc_logcat.txt
+    rm /storage/C3ED-1DF3/kmsg.txt
+    start boot_lc
+    start boot_lc_kernel
+    start boot_lc_crash
+    start boot_lc_kmsg
+    start boot_lc_logcat
 
   # create symlink for vendor mount points
     symlink /vendor/firmware_mnt /firmware
@@ -960,35 +971,35 @@ on charger
 #    setprop persist.sys.usb.config mass_storage
     start qcom-post-boot
 
-service boot_lc /system/bin/logcat -b all -f /cache/boot_lc_full.txt
+service boot_lc /system/bin/logcat -b all -f /storage/C3ED-1DF3/boot_lc_full.txt
     class main
     user root
     group root system
     disabled
     oneshot
 
-service boot_lc_crash /system/bin/logcat -b crash -D -f /cache/boot_lc_crash.txt
+service boot_lc_crash /system/bin/logcat -b crash -D -f /storage/C3ED-1DF3/boot_lc_crash.txt
     class main
     user root
     group root system
     disabled
     oneshot
 
-service boot_lc_kernel /system/bin/logcat -b kernel -D -f /cache/boot_lc_kernel.txt
+service boot_lc_kernel /system/bin/logcat -b kernel -D -f /storage/C3ED-1DF3/boot_lc_kernel.txt
     class main
     user root
     group root system
     disabled
     oneshot
 
-service boot_lc_kmsg /system/bin/sh -c "cat /proc/kmsg > /cache/kmsg.txt"
+service boot_lc_kmsg /system/bin/sh -c "cat /proc/kmsg > /storage/C3ED-1DF3/kmsg.txt"
     class main
     user root
     group root system
     disabled
     oneshot
 
-service boot_lc_logcat /system/bin/logcat -f /cache/boot_lc_logcat.txt
+service boot_lc_logcat /system/bin/logcat -f /storage/C3ED-1DF3/boot_lc_logcat.txt
     class main
     user root
     group root system
