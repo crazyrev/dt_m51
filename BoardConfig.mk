@@ -65,6 +65,7 @@ TARGET_LINUX_KERNEL_VERSION := 4.14
 BOARD_KERNEL_CMDLINE += console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1 androidboot.usbcontroller=a600000.dwc3 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_BOOTIMG_HEADER_VERSION := 2
+TARGET_USES_64_BIT_BINDER := true
 
 BOARD_KERNEL_BASE            := 0x00000000
 BOARD_KERNEL_PAGESIZE        := 4096
@@ -191,7 +192,7 @@ BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USES_MKE2FS := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.default
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
 
 # SePolicy
 TARGET_SEPOLICY_DIR := msmsteppe
