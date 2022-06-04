@@ -16,37 +16,18 @@
 # Path
 DEVICE_PATH := device/samsung/m51
 
-# Prop
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.secure=0 \
-    ro.adb.secure=0
-    persist.service.acm.enable=0 \
-    persist.sys.usb.config=mtp,adb \
-    ro.debuggable=1 \
-    ro.dalvik.vm.native.bridge=0 \
-    ro.mount.fs=EXT4 \
-    ro.kernel.android.checkjni=0 \
-    persist.service.adb.enable=1 \
-    persist.service.debuggable=1 \
-    persist.sys.usb.config=mtp,adb
-
-# Partitions
 PRODUCT_BUILD_SUPER_PARTITION := false
+BOARD_BUILD_PRODUCT_IMAGE := true
+PRODUCT_SHIPPING_API_LEVEL := 29
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # APEX
-PRODUCT_COMPRESSED_APEX := false
-
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 30
-
-# AID/fs configs
-PRODUCT_PACKAGES += \
-    fs_config_files
+PRODUCT_COMPRESSED_APEX := true
 
 # No A/B
 AB_OTA_UPDATER := false
@@ -54,7 +35,6 @@ AB_OTA_UPDATER := false
 # Init files and fstab
 PRODUCT_PACKAGES += \
     fstab.default \
-    fstab.default.ramdisk \
     fstab.ramplus \
     init.qcom.rc \
     init.qcom.usb.rc \
@@ -67,7 +47,6 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc \
     wifi_qcom.rc \
     wifi_sec.rc \
-    init.audio.samsung.rc \
     init.nfc.samsung.rc \
     init.vendor.onebinary.rc \
     init.vendor.rilchip.rc \
@@ -156,25 +135,23 @@ PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
 # Display
 PRODUCT_PACKAGES += \
+    vendor.qti.hardware.display.composer@1.0.vendor \
+    vendor.qti.hardware.display.composer@2.0.vendor \
+    vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.qti.hardware.display.mapper@3.0 \
+    vendor.qti.hardware.display.mapper@4.0.vendor \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
-    vendor.qti.hardware.display.allocator-service \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
-    android.hardware.renderscript@1.0-impl \
-    libtinyxml \
-    libtinyxml2 \
-    hwcomposer.sm6150 \
     gralloc.sm6150 \
+    hwcomposer.sm6150 \
+    libdisplayconfig \
+    libtinyxml \
+    libvulkan \
     memtrack.sm6150 \
-    libqdMetaData \
-    libdisplayconfig.qti \
-    vendor.qti.hardware.display.mapper@1.1.vendor \
-    vendor.qti.hardware.display.mapper@2.0.vendor \
-    vendor.qti.hardware.display.mapper@3.0.vendor \
-    vendor.qti.hardware.display.mapper@4.0.vendor \
-    vendor.display.config@2.0.vendor
+    vendor.qti.hardware.display.allocator-service
 
 PRODUCT_PACKAGES += \
     disable_configstore
@@ -347,7 +324,7 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.5.vendor \
+    android.hardware.radio@1.4.vendor \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
     libxml2 \
@@ -365,11 +342,12 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
+    android.hardware.usb@1.3-service.samsung
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.samsung
+    android.hardware.vibrator-service.samsung \
+    android.hardware.light-service.samsung
 
 # Tether
 PRODUCT_PACKAGES += \
@@ -416,7 +394,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/samsung/aidl/power-libperfmgr
      
 # Prop files
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system.prop
+TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Inherit proprietary blobs

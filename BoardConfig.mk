@@ -17,7 +17,10 @@
 DEVICE_PATH := device/samsung/m51
 
 BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
+BUILD_BROKEN_ENFORCE_SYSPROP_OWNER := true
 
 # APEX image
 DEXPREOPT_GENERATE_APEX_IMAGE := true
@@ -56,7 +59,6 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a76
 # Kernel config
 TARGET_KERNEL_CONFIG        := m51_defconfig
 BOARD_NAME                  := SRPTD22A002
-TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE        := kernel/samsung/m51
 TARGET_KERNEL_ARCH          := arm64
 TARGET_KERNEL_HEADER_ARCH   := arm64
@@ -87,12 +89,7 @@ BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 BOARD_ROOT_EXTRA_FOLDERS += \
-    prism \
-    product \
-    optics \
-    metadata \
-    spu \
-    misc \
+    metadata \ 
     efs
 
 # File systems
@@ -148,7 +145,6 @@ TARGET_KEYMASTER_VARIANT := samsung
 
 # HIDL manifests
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/framework_compatibility_matrix.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/compatibility_matrix.xml
 
 # QCOM
@@ -174,8 +170,8 @@ TARGET_DISABLED_UBWC := true
 BOARD_USES_ADRENO := true
 
 # Fingerprint
-BUILD_FINGERPRINT := "samsung/m51nsxx/m51:11/RP1A.200720.012/M515FXXU2CUB7:user/release-keys"
-PRIVATE_BUILD_DESC := "m51nsxx-user 11 RP1A.200720.012 M515FXXU2CUB7 release-keys"
+BUILD_FINGERPRINT := "samsung/m51nsxx/qssi:12/SP1A.210812.016/M515FXXU4DVE1:user/release-keys"
+PRIVATE_BUILD_DESC := "m51nsxx-user 12 SP1A.210812.016 M515FXXU4DVE1 release-keys"
 
 VENDOR_SECURITY_PATCH := 2022-01-01
 
@@ -200,7 +196,7 @@ include device/qcom/sepolicy_vndr/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Treble
-BOARD_VNDK_VERSION := current
+BOARD_VNDK_VERSION := 30
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Wifi

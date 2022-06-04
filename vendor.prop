@@ -143,6 +143,9 @@ ro.hardware.gatekeeper=mdfpp
 ro.hardware.keystore=mdfpp
 ro.security.keystore.keytype=sakv2,gak
 
+# crypto
+ro.crypto.volume.filenames_mode=aes-256-cts
+
 # Media
 debug.stagefright.omx_default_rank=0
 debug.stagefright.ccodec=1
