@@ -18,7 +18,7 @@ DEVICE_PATH := device/samsung/m51
 
 PRODUCT_BUILD_SUPER_PARTITION := false
 BOARD_BUILD_PRODUCT_IMAGE := true
-PRODUCT_SHIPPING_API_LEVEL := 29
+# PRODUCT_SHIPPING_API_LEVEL := 29
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
@@ -61,6 +61,8 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.sh \
     init.qti.chg_policy.sh
+
+PRODUCT_TARGET_VNDK_VERSION := 30
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -392,9 +394,9 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/samsung/aidl/power-libperfmgr
-     
+
 # Prop files
-TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system.prop
+TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
 TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
