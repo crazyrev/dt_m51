@@ -27,7 +27,7 @@ DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # APEX
-PRODUCT_COMPRESSED_APEX := true
+PRODUCT_COMPRESSED_APEX := false
 
 # No A/B
 AB_OTA_UPDATER := false
@@ -177,12 +177,9 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service
 
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/init/android.hardware.gatekeeper@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.gatekeeper@1.0-service.rc
-
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1.vendor
+    android.hardware.health@2.1-service
 
 # HIDL
 PRODUCT_PACKAGES += \
