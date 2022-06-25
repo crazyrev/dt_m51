@@ -14,4 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/pixys_m51.mk
+    $(LOCAL_DIR)/lineage_m51.mk
