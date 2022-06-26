@@ -383,10 +383,5 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel \
     hardware/samsung/aidl/power-libperfmgr
 
-# Prop files
-TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
-TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-
 # Inherit proprietary blobs
 $(call inherit-product, vendor/samsung/m51/m51-vendor.mk)
