@@ -13,28 +13,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 # Path
 DEVICE_PATH := device/samsung/m51
 
-PRODUCT_BUILD_SUPER_PARTITION := false
-BOARD_BUILD_PRODUCT_IMAGE := true
-# PRODUCT_SHIPPING_API_LEVEL := 29
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-#PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-PRODUCT_SHIPPING_API_LEVEL := 30
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
-# APEX
-# xPRODUCT_COMPRESSED_APEX := false
-
-$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
-
+# Partition
+PRODUCT_BUILD_SUPER_PARTITION := false
+BOARD_BUILD_PRODUCT_IMAGE := true
+PRODUCT_SHIPPING_API_LEVEL := 30
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # No A/B
 AB_OTA_UPDATER := false
+
+# AAPT config
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Init files and fstab
 PRODUCT_PACKAGES += \
@@ -65,8 +68,6 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.sh \
     init.qti.chg_policy.sh
-
-PRODUCT_TARGET_VNDK_VERSION := 30
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -133,19 +134,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1.vendor
 
-# Graphics
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-# A list of dpis to select prebuilt apk, in precedence order.
-PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
-
-# Display
+# Display/Graphics
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.display.composer@1.0.vendor \
-    vendor.qti.hardware.display.composer@2.0.vendor \
-    vendor.qti.hardware.display.mapper@2.0.vendor \
-    vendor.qti.hardware.display.mapper@3.0 \
-    vendor.qti.hardware.display.mapper@4.0.vendor \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
@@ -159,36 +149,29 @@ PRODUCT_PACKAGES += \
     memtrack.sm6150 \
     vendor.qti.hardware.display.allocator-service
 
+# Display interfaces
 PRODUCT_PACKAGES += \
-    disable_configstore
-
-# Doze
-PRODUCT_PACKAGES += \
-    SamsungDoze
+    vendor.qti.hardware.display.composer@1.0.vendor \
+    vendor.qti.hardware.display.composer@2.0.vendor \
+    vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.qti.hardware.display.mapper@3.0 \
+    vendor.qti.hardware.display.mapper@4.0.vendor
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.3-service.clearkey \
-    libdrmclearkeyplugin \
-    android.hardware.drm@1.3.vendor
+    android.hardware.drm@1.3.vendor \
+    android.hardware.drm@1.4-service.clearkey
 
 # fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
 
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
-
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-service
+    android.hardware.health@2.1-impl
 
-# HIDL
+# Binder
 PRODUCT_PACKAGES += \
-    android.hidl.manager@1.0 \
-    android.hidl.manager@1.0.vendor \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
@@ -198,10 +181,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/keylayout/sec_touchscreen.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/sec_touchscreen.kl
 
-# Keymaster
+# Crypto
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0-service.samsung \
-    libkeymaster4_1support.vendor
+    android.hardware.gatekeeper@1.0.vendor \
+    android.hardware.keymaster@4.1.vendor
+
+# Framework detect
+PRODUCT_PACKAGES += \
+    libqti_vndfwk_detect.vendor \
+    libvndfwk_detect_jni.qti.vendor
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -257,7 +245,7 @@ PRODUCT_PACKAGES += \
 
 # Perf
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.perf@2.2.vendor
+    libqti-perfd-client
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -307,8 +295,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.samsung-libperfmgr \
-    android.hardware.power@1.2.vendor
+    android.hardware.power-service.samsung-libperfmgr
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -345,12 +332,12 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.3-service.samsung
+    android.hardware.usb@1.0-service
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.samsung \
-    android.hardware.light-service.samsung
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
 
 # Tether
 PRODUCT_PACKAGES += \
